@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+opencode-llama.yaml
+
+# Build and packaging output.
+build/
+dist/
+*.egg-info/

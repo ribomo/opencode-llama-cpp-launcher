@@ -1,0 +1,15 @@
+# Example launcher config.
+# Rename to .opencode-llama.yaml in the project where you want OpenCode to run.
+
+# Absolute path to your local GGUF model file.
+model: /absolute/path/to/model.gguf
+
+# Optional absolute path to llama-server. Omit this to use PATH lookup.
+llama_server: /optional/path/to/llama-server
+
+# Preferred llama-server port. If this port is busy, the launcher will choose
+# an available port automatically.
+port: 8080
+
+# llama-server context size.
+ctx_size: 8192
