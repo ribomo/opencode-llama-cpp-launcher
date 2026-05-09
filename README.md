@@ -10,8 +10,7 @@ the local agentic coding session ends.
 
 - OpenCode
 - llama.cpp's `llama-server`
-- A local model supported by `llama-server`, for example Qwen, DeepSeek, or
-  Gemma
+- A local GGUF model, such as Qwen, DeepSeek, or Gemma
 
 The launcher finds `llama-server` on `PATH`, or you can set `llama_server` in
 your config.
