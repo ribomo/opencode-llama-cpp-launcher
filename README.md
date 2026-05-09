@@ -1,19 +1,24 @@
 # OpenCode llama.cpp Launcher
 
-A one command solution for launching [OpenCode](https://opencode.ai/) with any
-local LLM that `llama-server` can serve, including models like Qwen, DeepSeek,
-and Gemma. This launcher starts `llama-server`, waits for it to become ready,
-wires the OpenAI compatible provider config into OpenCode, and cleans up when
-the local agentic coding session ends.
+Launch [OpenCode](https://opencode.ai/) with a local model served by
+[llama.cpp](https://github.com/ggml-org/llama.cpp). The launcher starts
+`llama-server`, wires OpenCode to it, and cleans up when your session ends.
+
+![OpenCode llama.cpp Launcher demo](docs/opencode-llama-demo.gif)
 
 ## Requirements
 
-- OpenCode
-- llama.cpp's `llama-server`
+- [OpenCode](https://opencode.ai/)
+- [llama.cpp](https://github.com/ggml-org/llama.cpp)'s `llama-server`
 - A local GGUF model, such as Qwen, DeepSeek, or Gemma
 
 The launcher finds `llama-server` on `PATH`, or you can set `llama_server` in
 your config.
+
+Install OpenCode using its
+[GitHub installation instructions](https://github.com/anomalyco/opencode#installation).
+Install llama.cpp using its
+[installation guide](https://github.com/ggml-org/llama.cpp/blob/master/docs/install.md).
 
 ## Install
 
