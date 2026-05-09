@@ -2,10 +2,17 @@ from __future__ import annotations
 
 from pathlib import Path
 
+import pytest
 from typer.testing import CliRunner
 
 from opencode_llama_cpp_launcher.cli import entrypoint
 from opencode_llama_cpp_launcher.cli.entrypoint import app
+from opencode_llama_cpp_launcher.storage.config_loader import XDG_CONFIG_HOME_ENV
+
+
+@pytest.fixture(autouse=True)
+def isolate_user_config(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
+    monkeypatch.setenv(XDG_CONFIG_HOME_ENV, str(tmp_path / "xdg-config"))
 
 
 def test_cli_missing_model_prints_template(tmp_path: Path) -> None:
@@ -15,7 +22,7 @@ def test_cli_missing_model_prints_template(tmp_path: Path) -> None:
 
     assert result.exit_code == 1
     assert "No GGUF model path" in result.stderr
-    assert ".opencode-llama.yaml" in result.stderr
+    assert "opencode-llama.yaml" in result.stderr
 
 
 def test_cli_dry_run_smoke(monkeypatch, tmp_path: Path) -> None:

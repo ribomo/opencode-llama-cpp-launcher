@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import os
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
@@ -14,9 +15,16 @@ from opencode_llama_cpp_launcher.models.launch_config import (
 from opencode_llama_cpp_launcher.services.errors import LauncherError
 
 
-DEFAULT_CONFIG_NAMES = (".opencode-llama.yaml", ".opencode-llama.yml")
+DEFAULT_CONFIG_NAMES = (
+    "opencode-llama.yaml",
+    "opencode-llama.yml",
+    ".opencode-llama.yaml",
+    ".opencode-llama.yml",
+)
+XDG_CONFIG_HOME_ENV = "XDG_CONFIG_HOME"
+USER_CONFIG_NAMES = ("opencode-llama.yaml", ".opencode-llama.yaml")
 
-CONFIG_TEMPLATE = """# .opencode-llama.yaml
+CONFIG_TEMPLATE = """# opencode-llama.yaml or ~/.config/opencode-llama.yaml
 model: /absolute/path/to/model.gguf
 llama_server: /optional/path/to/llama-server
 port: 8080
@@ -42,7 +50,25 @@ def find_config_path(project: Path, explicit_config: Path | None) -> Path | None
         if candidate.exists():
             return candidate
 
+    for config_path in get_user_config_paths():
+        if config_path.exists():
+            return config_path
+
     return None
+
+
+def get_user_config_paths() -> tuple[Path, Path]:
+    config_home = os.environ.get(XDG_CONFIG_HOME_ENV)
+    if config_home:
+        config_dir = Path(config_home).expanduser()
+    else:
+        config_dir = Path.home() / ".config"
+
+    preferred_config_name, dotted_config_name = USER_CONFIG_NAMES
+    return (
+        config_dir / preferred_config_name,
+        config_dir / dotted_config_name,
+    )
 
 
 def load_file_config(project: Path, explicit_config: Path | None = None) -> FileConfig:

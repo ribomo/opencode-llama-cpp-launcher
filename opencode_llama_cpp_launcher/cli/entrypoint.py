@@ -42,7 +42,7 @@ def launch_callback(
         None,
         "--config",
         "-f",
-        help="Path to .opencode-llama.yaml.",
+        help="Path to opencode-llama.yaml.",
     ),
     port: int | None = typer.Option(
         None,

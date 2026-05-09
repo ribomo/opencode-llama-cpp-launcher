@@ -33,7 +33,7 @@ uv run opencode-llama doctor
 
 ## Configure
 
-Create a local config in the project where you want OpenCode to run:
+Create a project-local config in the project where you want OpenCode to run:
 
 ```bash
 cp opencode-llama.example.yaml opencode-llama.yaml
@@ -48,9 +48,11 @@ port: 8080
 ctx_size: 8192
 ```
 
-The local config file is ignored by this repository because it usually contains
-machine specific paths. Keep `opencode-llama.example.yaml` generic and safe to
-commit.
+Config lookup order:
+
+1. The path passed with `--config`
+2. `opencode-llama.yaml` or `opencode-llama.yml` in the project directory
+3. `~/.config/opencode-llama.yaml`
 
 ## Usage
 
