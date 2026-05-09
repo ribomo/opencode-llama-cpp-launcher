@@ -4,7 +4,7 @@ Launch [OpenCode](https://opencode.ai/) with a local model served by
 [llama.cpp](https://github.com/ggml-org/llama.cpp). The launcher starts
 `llama-server`, wires OpenCode to it, and cleans up when your session ends.
 
-![OpenCode llama.cpp Launcher demo](docs/opencode-llama-demo.gif)
+![OpenCode llama.cpp Launcher demo](https://raw.githubusercontent.com/ribomo/opencode-llama-cpp-launcher/main/docs/opencode-llama-demo.gif)
 
 ## Requirements
 

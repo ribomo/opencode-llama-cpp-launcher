@@ -1,6 +1,6 @@
 [project]
 name = "opencode-llama-cpp-launcher"
-version = "0.1.4"
+version = "0.1.5"
 description = "One command launcher for running OpenCode with a local llama.cpp model."
 readme = "README.md"
 license = "MIT"
