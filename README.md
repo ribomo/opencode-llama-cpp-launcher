@@ -97,3 +97,7 @@ git status --short --ignored
 
 Do not commit local launcher configs, virtual environments, caches, build
 artifacts, or model paths.
+
+## License
+
+MIT

@@ -3,6 +3,7 @@ name = "opencode-llama-cpp-launcher"
 version = "0.1.0"
 description = "One command launcher for running OpenCode with a local llama.cpp model."
 readme = "README.md"
+license = "MIT"
 requires-python = ">=3.12"
 keywords = [
     "agentic-coding",
@@ -15,6 +16,7 @@ classifiers = [
     "Development Status :: 3 - Alpha",
     "Environment :: Console",
     "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
