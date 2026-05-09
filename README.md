@@ -19,27 +19,28 @@ your config.
 
 ## Install
 
-From this repository:
+For most users, install with `pipx`:
 
 ```bash
-uv sync --dev
+pipx install opencode-llama-cpp-launcher
+```
+
+Or install with `pip`:
+
+```bash
+python -m pip install opencode-llama-cpp-launcher
 ```
 
 Check that the required external binaries are available:
 
 ```bash
-uv run opencode-llama doctor
+opencode-llama doctor
 ```
 
 ## Configure
 
-Create a project-local config in the project where you want OpenCode to run:
-
-```bash
-cp opencode-llama.example.yaml opencode-llama.yaml
-```
-
-Then edit `opencode-llama.yaml`:
+Create `opencode-llama.yaml` in the project where you want OpenCode to run, or
+create `~/.config/opencode-llama.yaml` for a user-wide default:
 
 ```yaml
 model: /absolute/path/to/model.gguf
@@ -59,24 +60,24 @@ Config lookup order:
 Run with an explicit config file:
 
 ```bash
-uv run opencode-llama --config opencode-llama.yaml
+opencode-llama --config opencode-llama.yaml
 ```
 
 Or pass the model directly:
 
 ```bash
-uv run opencode-llama --model /absolute/path/to/model.gguf
+opencode-llama --model /absolute/path/to/model.gguf
 ```
 
 Useful options:
 
 ```bash
-uv run opencode-llama --help
-uv run opencode-llama --dry-run
-uv run opencode-llama --config opencode-llama.yaml
-uv run opencode-llama --port 9001
-uv run opencode-llama --ctx-size 8192
-uv run opencode-llama --llama-server /absolute/path/to/llama-server
+opencode-llama --help
+opencode-llama --dry-run
+opencode-llama --config opencode-llama.yaml
+opencode-llama --port 9001
+opencode-llama --ctx-size 8192
+opencode-llama --llama-server /absolute/path/to/llama-server
 ```
 
 If `llama-server` fails before becoming healthy, the launcher includes a bounded
@@ -84,6 +85,12 @@ tail of the server's startup output in the error message. Successful runs stay
 quiet.
 
 ## Development
+
+Install dependencies from this repository:
+
+```bash
+uv sync --dev
+```
 
 Run the test suite:
 
