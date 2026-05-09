@@ -8,7 +8,6 @@ the local agentic coding session ends.
 
 ## Requirements
 
-- Python 3.12+
 - OpenCode
 - llama.cpp's `llama-server`
 - A local model supported by `llama-server`, for example Qwen, DeepSeek, or
@@ -44,9 +43,11 @@ create `~/.config/opencode-llama.yaml` for a user-wide default:
 
 ```yaml
 model: /absolute/path/to/model.gguf
-llama_server: /optional/path/to/llama-server
-port: 8080
 ctx_size: 8192
+
+# Optional
+port: 8080
+llama_server: /optional/path/to/llama-server
 ```
 
 Config lookup order:
